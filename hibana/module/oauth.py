@@ -1,7 +1,9 @@
 from lib2to3.pgen2 import token
 from hibana.env.config import Config
+from hibana.module.db import Controller
 from requests_oauthlib import OAuth1Session
 config = Config()
+controller = Controller()
 
 class Oauth():
 
@@ -59,15 +61,12 @@ class Oauth():
             verifier_result (str): 返却されたアクセストークン
         """
         params: dict = {param.split('=')[0] : param.split('=')[1] for param in verifier_result.split('&')}
-        access_token = params['oauth_token']
-        access_token_secret = params['oauth_token_secret']
-        userid = params['user_id']
-        screen_name = params['screen_name']
 
-        print(f"access_token: {access_token}")
-        print(f"access_token_secret : {access_token_secret}")
-        print(f"userid : {userid}")
-        print(f"screen name : {screen_name}")
+        controller.set_token(
+            userid = params['user_id'],
+            access_token = params['oauth_token'],
+            access_token_secret = params['oauth_token_secret']
+        )
 
         
     def main(self):
