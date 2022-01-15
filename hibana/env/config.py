@@ -4,7 +4,7 @@ import os
 class Config():
     def __init__(self):
         path = os.path.join(os.path.dirname(__file__), 'config.ini')
-        self.config = configparser.ConfigParser()
+        self.config = configparser.ConfigParser(interpolation=None)
         self.config.read(path, 'UTF-8')
 
     @property
@@ -26,3 +26,7 @@ class Config():
     @property
     def access_token_secret(self) -> str:
         return str(self.config['KEYS']['access_token_secret'])
+
+    @property
+    def userid(self) -> str:
+        return str(self.config['ID']['my_id'])

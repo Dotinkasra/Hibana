@@ -37,12 +37,13 @@ class Controller():
         self.conn.commit()
         self.__close()
 
-    def select(self, userid: str):
+    def get_access_token(self, userid: str) -> list:
         self.__connect()
         self.cur.execute(
-            f'SELECT * FROM token WHERE userid = ?',
-            (userid)
+            'SELECT * FROM token WHERE userid = ?',
+            (userid,)
         )
         result: list = self.cur.fetchall()
         self.__close()
         return result
+

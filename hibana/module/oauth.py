@@ -2,6 +2,7 @@ from lib2to3.pgen2 import token
 from hibana.env.config import Config
 from hibana.module.db import Controller
 from requests_oauthlib import OAuth1Session
+
 config = Config()
 controller = Controller()
 
