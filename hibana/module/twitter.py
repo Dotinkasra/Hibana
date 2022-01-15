@@ -38,7 +38,7 @@ class Twitter():
             user_fields = ['created_at', 'description', 'entities', 'id', 'location', 'name', 'profile_image_url', 'username', 'verified']
         )
 
-    def parse_response(self, response: Union):
+    def get_tweet(self, response: Union) -> ATweet:
         if len(response.errors) >= 1:
             return response.errors
         
