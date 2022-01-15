@@ -1,5 +1,4 @@
 import sqlite3
-from typing import Iterable
 
 class Controller():
     def __init__(self) -> None:
